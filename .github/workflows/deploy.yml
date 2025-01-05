@@ -25,7 +25,9 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./client
-        run: npm ci
+        run: |
+          npm ci
+          npm install @rollup/rollup-linux-x64-gnu --no-save
 
       - name: Build
         working-directory: ./client
