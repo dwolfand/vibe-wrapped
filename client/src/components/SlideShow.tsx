@@ -1,11 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
-import {
-  WorkoutStats,
-  ClassmateStats,
-  LocationStats,
-  PeerStats,
-} from "../types/stats";
+import { WorkoutStats, ClassmateStats, PeerStats } from "../types/stats";
 import "./SlideShow.css";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
