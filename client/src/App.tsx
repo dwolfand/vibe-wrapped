@@ -8,7 +8,7 @@ import "./App.css";
 
 // API URL based on environment
 const API_BASE_URL = import.meta.env.PROD
-  ? "https://ls1sfrtf90.execute-api.us-east-1.amazonaws.com/production" // Production URL
+  ? "https://wrapped-api.thevibestudiolynchburg.com" // Production URL
   : "http://localhost:8080/dev"; // Development URL
 
 // Helper function to format the date
