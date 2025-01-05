@@ -35,7 +35,7 @@ const IntroAnimation = ({ userInfo, onComplete }: IntroAnimationProps) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          Your Vibe Studio Wrapped Year in Review
+          Your Vibe Year in Review
         </motion.h1>
 
         <motion.div

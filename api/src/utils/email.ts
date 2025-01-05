@@ -1,6 +1,8 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { getStudioShortName } from "./studios";
 
+const baseUrl = "https://dwolfand.github.io/vibe-wrapped";
+
 interface StatsLinkEmailData {
   email: string;
   firstName: string;
@@ -86,7 +88,7 @@ export async function sendStatsLinkEmail({
   clientId,
   studioId,
 }: StatsLinkEmailData) {
-  const statsUrl = `https://vibewrapped.com/?clientId=${clientId}&studioId=${studioId}`;
+  const statsUrl = `${baseUrl}/?clientId=${clientId}&studioId=vibe`;
 
   const command = new SendEmailCommand({
     Source: "Vibe Wrapped <no-reply@madwrapped.com>",
@@ -109,11 +111,11 @@ export async function sendStatsLinkEmail({
               <body style="margin: 0; padding: 0;">
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                   <div style="text-align: center; padding: 20px;">
-                    <img src="https://vibewrapped.com/images/email/logo.jpg" 
+                    <img src="${baseUrl}/images/email/logo.jpg" 
                          alt="The Vibe Studio" 
                          style="width: 200px; height: auto;" />
                   </div>
-                  <img src="https://vibewrapped.com/images/email/email-header.jpg" 
+                  <img src="${baseUrl}/images/email/email-header.jpg" 
                        alt="Vibe Wrapped" 
                        style="width: 100%; height: auto; display: block; max-width: 600px;" />
                   <div style="padding: 40px 20px;">

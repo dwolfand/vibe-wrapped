@@ -8,6 +8,63 @@ import Confetti from "react-confetti";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+// Define custom plugin for gradients
+const createGradientPlugin = {
+  id: "customCanvasBackgroundColor",
+  beforeDraw: (chart: any) => {
+    const ctx = chart.ctx;
+    const chartArea = chart.chartArea;
+    const centerX = (chartArea.left + chartArea.right) / 2;
+    const centerY = (chartArea.top + chartArea.bottom) / 2;
+    const radius =
+      Math.min(
+        chartArea.right - chartArea.left,
+        chartArea.bottom - chartArea.top
+      ) / 2;
+
+    // Create gradients
+    const pinkGradient = ctx.createRadialGradient(
+      centerX,
+      centerY,
+      0,
+      centerX,
+      centerY,
+      radius
+    );
+    pinkGradient.addColorStop(0, "rgba(255, 100, 255, 0.8)");
+    pinkGradient.addColorStop(1, "rgba(255, 0, 255, 0.8)");
+
+    const cyanGradient = ctx.createRadialGradient(
+      centerX,
+      centerY,
+      0,
+      centerX,
+      centerY,
+      radius
+    );
+    cyanGradient.addColorStop(0, "rgba(100, 255, 255, 0.8)");
+    cyanGradient.addColorStop(1, "rgba(0, 255, 255, 0.8)");
+
+    const purpleGradient = ctx.createRadialGradient(
+      centerX,
+      centerY,
+      0,
+      centerX,
+      centerY,
+      radius
+    );
+    purpleGradient.addColorStop(0, "rgba(200, 100, 255, 0.8)");
+    purpleGradient.addColorStop(1, "rgba(157, 0, 255, 0.8)");
+
+    // Store gradients in chart for use
+    chart.data.datasets[0].backgroundColor = [
+      pinkGradient,
+      cyanGradient,
+      purpleGradient,
+    ];
+  },
+};
+
 interface SlideShowProps {
   stats: WorkoutStats;
   peerStats?: PeerStats;
@@ -175,13 +232,28 @@ const SlideShow = ({ stats, studioId }: SlideShowProps) => {
                 datasets: [
                   {
                     data: stats.favoriteClasses.map((c) => c.count),
-                    backgroundColor: ["#ff00ff", "#00ffff", "#9d00ff"],
-                    borderColor: [
-                      "rgba(0, 0, 0, 0.2)",
-                      "rgba(0, 0, 0, 0.2)",
-                      "rgba(0, 0, 0, 0.2)",
+                    backgroundColor: [
+                      "rgba(255, 0, 255, 0.8)",
+                      "rgba(0, 255, 255, 0.8)",
+                      "rgba(157, 0, 255, 0.8)",
                     ],
-                    borderWidth: 1,
+                    borderColor: [
+                      "rgba(255, 0, 255, 1)",
+                      "rgba(0, 255, 255, 1)",
+                      "rgba(157, 0, 255, 1)",
+                    ],
+                    borderWidth: 2,
+                    hoverBackgroundColor: [
+                      "rgba(255, 0, 255, 1)",
+                      "rgba(0, 255, 255, 1)",
+                      "rgba(157, 0, 255, 1)",
+                    ],
+                    hoverBorderColor: [
+                      "rgba(255, 0, 255, 1)",
+                      "rgba(0, 255, 255, 1)",
+                      "rgba(157, 0, 255, 1)",
+                    ],
+                    hoverBorderWidth: 3,
                   },
                 ],
               }}
@@ -216,6 +288,7 @@ const SlideShow = ({ stats, studioId }: SlideShowProps) => {
                   },
                 },
               }}
+              plugins={[createGradientPlugin]}
             />
           </div>
           <p className="stat-detail">
