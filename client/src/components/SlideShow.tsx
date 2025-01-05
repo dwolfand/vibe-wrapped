@@ -365,7 +365,7 @@ const SlideShow = ({ stats, studioId }: SlideShowProps) => {
   return (
     <div className="slideshow">
       <div className="slide-header">
-        <img src="/logo.jpg" alt="Logo" className="logo" />
+        <img src="./logo.jpg" alt="Logo" className="logo" />
         <h1 className="year-title">{stats.firstName}'s 2024 Year in Review</h1>
       </div>
       <motion.div

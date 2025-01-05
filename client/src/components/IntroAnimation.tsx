@@ -23,7 +23,7 @@ const IntroAnimation = ({ userInfo, onComplete }: IntroAnimationProps) => {
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <motion.img
-          src="/logo.jpg"
+          src="./logo.jpg"
           alt="Vibe Studio Logo"
           className="logo"
           initial={{ opacity: 0, y: -20 }}

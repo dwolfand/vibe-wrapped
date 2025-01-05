@@ -220,7 +220,7 @@ function App() {
   if (error || !stats) {
     return (
       <div className="error-container">
-        <img src="/logo.jpg" alt="The Vibe Studio" className="logo" />
+        <img src="./logo.jpg" alt="The Vibe Studio" className="logo" />
         <div className="form-title">Vibe Wrapped 2024</div>
         <div className="form-subtitle">
           Enter your email and we'll send you a direct link to your year in
