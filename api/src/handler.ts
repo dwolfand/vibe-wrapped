@@ -32,8 +32,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5173",
     "http://localhost:4173",
-    "https://vibewrapped.com",
-    "https://www.vibewrapped.com",
+    "https://wrapped.thevibestudiolynchburg.com",
     "https://dwolfand.github.io",
   ],
   methods: ["GET", "POST"],

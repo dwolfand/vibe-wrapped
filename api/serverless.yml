@@ -79,7 +79,7 @@ custom:
     production: ""
     dev: "dev"
   # customDomain:
-  #   domainName: api.vibewrapped.com
+  #   domainName: wrapped-api.thevibestudiolynchburg.com
   #   basePath: ${self:custom.basePaths.${self:provider.stage}}
   #   stage: ${opt:stage, 'dev'}
   #   createRoute53Record: true

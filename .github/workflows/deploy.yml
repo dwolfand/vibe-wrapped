@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://api.vibewrapped.com
+      url: https://wrapped-api.thevibestudiolynchburg.com
     steps:
       - uses: actions/checkout@v4
 

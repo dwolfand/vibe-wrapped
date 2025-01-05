@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(({ mode }) => {
   // Use different GA IDs based on mode
   console.log("mode", mode);
-  const gaId = mode === "production" ? "G-6ZDDETM27H" : "G-DEVELOPMENT";
+  const gaId = mode === "production" ? "G-ZVZ55X4CM4" : "G-DEVELOPMENT";
 
   // Only include GA script if ID is provided
   const gaScript = gaId
