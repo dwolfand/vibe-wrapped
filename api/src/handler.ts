@@ -34,6 +34,7 @@ const corsOptions = {
     "http://localhost:4173",
     "https://vibewrapped.com",
     "https://www.vibewrapped.com",
+    "https://dwolfand.github.io",
   ],
   methods: ["GET", "POST"],
   credentials: true,

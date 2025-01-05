@@ -359,7 +359,7 @@ const SlideShow = ({ stats, studioId }: SlideShowProps) => {
               </a>
             </p>
             <div className="motivation-text">
-              Let's see how you'll stack up next year! 💪
+              Let's see how you'll stack up next year! 💃
             </div>
           </div>
         </>

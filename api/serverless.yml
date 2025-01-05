@@ -6,7 +6,7 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-offline
   - serverless-plugin-typescript
-  - serverless-domain-manager
+  # - serverless-domain-manager
 
 provider:
   name: aws
@@ -78,15 +78,15 @@ custom:
   basePaths:
     production: ""
     dev: "dev"
-  customDomain:
-    domainName: api.vibewrapped.com
-    basePath: ${self:custom.basePaths.${self:provider.stage}}
-    stage: ${opt:stage, 'dev'}
-    createRoute53Record: true
-    endpointType: "regional"
-    securityPolicy: tls_1_2
-    apiType: rest
-    autoDomain: true
+  # customDomain:
+  #   domainName: api.vibewrapped.com
+  #   basePath: ${self:custom.basePaths.${self:provider.stage}}
+  #   stage: ${opt:stage, 'dev'}
+  #   createRoute53Record: true
+  #   endpointType: "regional"
+  #   securityPolicy: tls_1_2
+  #   apiType: rest
+  #   autoDomain: true
   dotenv:
     path: .env
     basePath: ./

@@ -63,7 +63,7 @@ export async function getStats(req: Request, res: Response) {
       status: 200,
     });
 
-    console.log(JSON.stringify(stats, null, 2));
+    // console.log(JSON.stringify(stats, null, 2));
 
     res.json(stats);
   } catch (error) {
