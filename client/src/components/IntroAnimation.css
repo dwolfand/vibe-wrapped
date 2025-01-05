@@ -1,0 +1,75 @@
+.intro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+.intro-content {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 0, 255, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.vibe-logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.3));
+}
+
+.intro-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+  font-family: "Bank Gothic", "BankGothic Lt BT", "Bank Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.user-info {
+  margin: 2rem 0;
+}
+
+.user-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, var(--vibe-pink), var(--vibe-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.user-info p {
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.start-prompt {
+  margin-top: 3rem;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, var(--vibe-pink), var(--vibe-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pulse 2s infinite;
+  text-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+} 

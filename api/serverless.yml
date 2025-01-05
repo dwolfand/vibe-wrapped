@@ -1,0 +1,98 @@
+service: vibe-wrapped-api
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-domain-manager
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    STAGE: ${opt:stage, 'dev'}
+    MONGODB_URI: ${env:MONGODB_URI, ''}
+    MONGODB_DB_NAME: ${env:MONGODB_DB_NAME, ''}
+    SENTRY_DSN: ${env:SENTRY_DSN, ''}
+    ADMIN_EMAIL: ${env:ADMIN_EMAIL, ''}
+    ADMIN_CC_EMAIL: ${env:ADMIN_CC_EMAIL, ''}
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - ses:SendEmail
+            - ses:SendRawEmail
+          Resource: "*"
+
+package:
+  patterns:
+    - "!.git/**"
+    - "!.gitignore"
+    - "!.serverless/**"
+    - "!.vscode/**"
+    - "!test/**"
+    - "!README.md"
+    - "node_modules/**"
+    - "!node_modules/.cache/**"
+    - "!node_modules/@types/**"
+    - "src/**"
+    - "package.json"
+    - "package-lock.json"
+    - "tsconfig.json"
+    - "data/**"
+
+functions:
+  api:
+    handler: src/handler.handler
+    timeout: 15
+    events:
+      - http:
+          path: /api/stats/{clientId}/{studioId}
+          method: get
+          cors: true
+      - http:
+          path: /api/health
+          method: get
+          cors: true
+      - http:
+          path: /api/lookup
+          method: post
+          cors: true
+      - http:
+          path: /api/notify-request
+          method: post
+          cors: true
+
+custom:
+  serverless-offline:
+    httpPort: 8080
+  typescript:
+    srcPath: src
+    include:
+      - src/**/*.ts
+  basePaths:
+    production: ""
+    dev: "dev"
+  customDomain:
+    domainName: api.vibewrapped.com
+    basePath: ${self:custom.basePaths.${self:provider.stage}}
+    stage: ${opt:stage, 'dev'}
+    createRoute53Record: true
+    endpointType: "regional"
+    securityPolicy: tls_1_2
+    apiType: rest
+    autoDomain: true
+  dotenv:
+    path: .env
+    basePath: ./
+    include:
+      - SENTRY_DSN
+      - MONGODB_URI
+      - MONGODB_DB_NAME
+      - ADMIN_EMAIL
+      - ADMIN_CC_EMAIL
