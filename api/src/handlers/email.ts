@@ -18,7 +18,7 @@ export async function lookupEmail(req: Request, res: Response) {
 
   try {
     const db = await getDb();
-    const stats = await db.collection("workout_stats").findOne({
+    const stats = await db.collection("vibe_workout_stats").findOne({
       email: email.toLowerCase(),
     });
 
