@@ -1,7 +1,7 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import { getStudioShortName } from "./studios";
 
-const baseUrl = "https://dwolfand.github.io/vibe-wrapped";
+const baseUrl = "https://wrapped.thevibestudiolynchburg.com";
 
 interface StatsLinkEmailData {
   email: string;
