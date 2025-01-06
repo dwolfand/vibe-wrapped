@@ -115,28 +115,22 @@ export async function sendStatsLinkEmail({
                          alt="The Vibe Studio" 
                          style="width: 200px; height: auto;" />
                   </div>
-                  <img src="${baseUrl}/images/email/email-header.jpg" 
-                       alt="Vibe Wrapped" 
-                       style="width: 100%; height: auto; display: block; max-width: 600px;" />
                   <div style="padding: 40px 20px;">
                     <h1 style="margin: 0 0 20px 0;">Hi ${firstName}! 👋</h1>
                     <p style="margin: 0 0 20px 0;">Your Vibe Studio Wrapped stats are ready to view!</p>
                     <p style="margin: 0 0 30px 0; font-weight: bold;">Unwrap your year of Vibes:</p>
                     <div style="text-align: center; margin: 30px 0;">
                       <a href="${statsUrl}" 
-                         style="background-color: #00ffff; color: black; padding: 12px 24px; 
+                         style="background-color: #00ffff; color: #000000; padding: 12px 24px; 
                                 text-decoration: none; border-radius: 5px; font-weight: bold; 
-                                display: inline-block;">
+                                display: inline-block; border: 2px solid #000000;
+                                text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);">
                         View My Year in Review
                       </a>
                     </div>
                     <p style="margin: 20px 0 10px 0;">Or copy and paste this link into your browser:</p>
                     <p style="margin: 0 0 30px 0; color: #00ffff;">${statsUrl}</p>
                     <p style="margin: 0;">You've crushed it this year! Celebrate your progress and let's make 2025 even more epic!</p>
-                    <hr style="margin: 30px 0; border: none; height: 1px; background-color: rgba(0, 0, 0, 0.1);">
-                    <p style="color: #888888; font-size: 12px; margin: 0;">
-                      This email was sent by Vibe Wrapped. If you didn't request this, you can ignore this email.
-                    </p>
                   </div>
                 </div>
               </body>
