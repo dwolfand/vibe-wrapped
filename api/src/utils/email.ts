@@ -95,6 +95,7 @@ export async function sendStatsLinkEmail({
     Destination: {
       ToAddresses: [email],
     },
+    ReplyToAddresses: [process.env.ADMIN_CC_EMAIL!],
     Message: {
       Subject: {
         Data: "Your Vibe Wrapped Stats Are Ready! 🎉",
