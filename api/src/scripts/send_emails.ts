@@ -10,35 +10,25 @@ SQL Query to get recipients with 100+ visits as JSON:
 SELECT json_agg(
   json_build_object(
     'email', email,
-    'firstName', "firstName",
-    'clientId', "clientId",
-    'studioId', "studioId"
+    'firstName', first_name,
+    'clientId', punchpass_id,
+    'studioId', 'vibe'
   )
 ) as recipients
 FROM (
   SELECT 
-      m.email,
-      m.first_name as "firstName",
-      m.mindbody_id as "clientId",
-      s.mindbody_id as "studioId",
-      COUNT(v.id) as visit_count
-  FROM members m
-  JOIN studios s ON m.studio_id = s.id
-  JOIN visits v ON v.member_id = m.id
+    m.email,
+    m.first_name,
+    m.punchpass_id,
+    mm.attended_classes
+  FROM member_metrics mm
+  JOIN members m ON m.id = mm.member_id
   WHERE 
-      m.email IS NOT NULL 
-      AND m.email != ''
-      AND v.cancelled = false
-      AND v.class_date >= '2024-01-01'
-      AND v.class_date < '2025-01-01'
-      AND m.email NOT IN ('example@email.com') -- Users that have already seen their stats
-  GROUP BY 
-      m.email,
-      m.first_name,
-      m.mindbody_id,
-      s.mindbody_id
-  HAVING COUNT(v.id) >= 100
-  ORDER BY visit_count DESC
+    m.email IS NOT NULL 
+    AND m.email != ''
+    AND mm.attended_classes >= 10
+    AND m.email NOT IN ('example@email.com')
+  ORDER BY mm.attended_classes DESC
 ) subquery;
 
 -- This will output a single JSON array that you can copy directly into the recipients array below
@@ -49,11 +39,9 @@ const recipients = [
   {
     email: "example@gmail.com",
     firstName: "David",
-    clientId: "100003434",
+    clientId: "999999",
     studioId: "vibe",
   },
-  // Add more recipients here
-  ,
 ];
 
 async function sendBulkEmails() {
